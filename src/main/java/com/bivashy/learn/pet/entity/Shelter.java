@@ -2,6 +2,7 @@ package com.bivashy.learn.pet.entity;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 
 public class Shelter {
 
@@ -33,6 +34,20 @@ public class Shelter {
 
     public void removePet(Pet pet) {
         pets.remove(pet);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o)
+            return true;
+        if (!(o instanceof Shelter shelter))
+            return false;
+        return getId() == shelter.getId() && Objects.equals(getName(), shelter.getName()) && Objects.equals(getPets(), shelter.getPets());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId(), getName(), getPets());
     }
 
 }

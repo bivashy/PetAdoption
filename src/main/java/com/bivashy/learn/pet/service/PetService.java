@@ -18,8 +18,10 @@ public class PetService {
         this.shelterService = shelterService;
     }
 
-    public void registerPet(Shelter shelter, Specie specie, int age, String description) {
-        shelter.addPet(new Pet(idCounter++, specie, age, description));
+    public Pet registerPet(Shelter shelter, Specie specie, int age, String description) {
+        Pet pet = new Pet(idCounter++, specie, age, description);
+        shelter.addPet(pet);
+        return pet;
     }
 
     public Optional<Pet> findPetById(int id) {
