@@ -10,10 +10,12 @@ import com.bivashy.learn.pet.service.ShelterService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ProblemDetail;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -27,6 +29,11 @@ public class AdoptController {
         this.shelterService = shelterService;
         this.petService = petService;
         this.adopterService = adopterService;
+    }
+
+    @GetMapping("/adopters")
+    public List<Adopter> adopters() {
+        return adopterService.getAdopters();
     }
 
     @PostMapping("/adopt")
